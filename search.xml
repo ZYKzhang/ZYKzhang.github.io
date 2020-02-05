@@ -15,6 +15,25 @@
     </entry>
     
     
+    
+    <entry>
+      <title>搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</title>
+      <link href="/2019/08/01/nas-frp/"/>
+      <url>/2019/08/01/nas-frp/</url>
+      
+        <content type="html"><![CDATA[<h1 id="搭建黑群晖NAS-Frp内网穿透实现外网访问家庭NAS"><a href="#搭建黑群晖NAS-Frp内网穿透实现外网访问家庭NAS" class="headerlink" title="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS"></a>搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</h1><h2 id="一-搭建黑群晖"><a href="#一-搭建黑群晖" class="headerlink" title="一.搭建黑群晖"></a>一.搭建黑群晖</h2><h3 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h3><table><thead><tr><th>名称</th><th>作用</th></tr></thead><tbody><tr><td>不用U盘一个</td><td>用作引导盘</td></tr><tr><td>不用的电脑或者买的微型机</td><td>安装NAS</td></tr><tr><td>家用电脑</td><td>用于安装和配置NAS</td></tr><tr><td>芯片无忧</td><td>用于查看U盘的PID和VID</td></tr><tr><td>osfmount</td><td>改写引导映像.img文件里面的PID和VID</td></tr><tr><td>Win32DiskImager</td><td>将映像文件写进U盘</td></tr><tr><td>Synology Assistant</td><td>用于配置NAS</td></tr></tbody></table><h3 id="制作引导盘方法一"><a href="#制作引导盘方法一" class="headerlink" title="制作引导盘方法一"></a>制作引导盘方法一</h3><ul><li><p>下载并安装芯片无忧、osfmount、Win32DiskImager、Synology Assistant</p></li><li><p>把U盘插入家用电脑 -&gt; 打开芯片无忧，会自动读取到U盘的PID和VID -&gt; 截图或用记事本记下来，后面会用到。<br><img src="http://www.zhangyukunblog.top/NAS-01.png" alt="image"></p></li><li><p>打开osfmount，点击左下角的Mount new<br><img src="http://www.zhangyukunblog.top/NAS-02.png" alt="image"></p></li><li><p>选择文件夹中的.img文件，一定注意要<strong>去掉</strong>窗口下面<strong>Read-only。 drvie前面的对号√</strong> -&gt; 点击OK<br><img src="http://www.zhangyukunblog.top/NAS-03-1.png" alt="image"></p></li><li><p>完成后双击打开，进入里面grub文件夹然后打开grub.cfg这个文件，找到并修改<strong>set vid = 0x1234；set vid=0x1234</strong>这两行里面的数字为刚才截图保存的数字。然后保存点击<strong>Dismount all &amp; Exit</strong></p><p>  <img src="http://www.zhangyukunblog.top/NAS-04.png" alt="image"><br><img src="http://www.zhangyukunblog.top/NAS-05.png" alt="image"></p></li><li><p>打开Win32DiskImager软件-&gt;选择img文件的路径-&gt;选择U盘的路径-&gt;点击write<br><img src="http://www.zhangyukunblog.top/NAS-06.png" alt="image"></p><p>  到此U盘引导制作完成</p></li></ul><hr><h3 id="在旧电脑安装DSM"><a href="#在旧电脑安装DSM" class="headerlink" title="在旧电脑安装DSM"></a>在旧电脑安装DSM</h3><ul><li><p>U盘插入旧电脑然后用U盘引导启动，出现下图即表示系统启动成功<br><img src="http://www.zhangyukunblog.top/NAS-07.png" alt="image"></p></li><li><p>在家用电脑上打开Synology Assistant，会自动搜索局域网里面的NAS主机<br><img src="http://www.zhangyukunblog.top/NAS-08.png" alt="image"></p></li><li><p>右键点击搜索到的主机 -&gt; 安装 -&gt; 选择文件夹里面的.pat文件 -&gt; 点击下一步<br><img src="http://www.zhangyukunblog.top/NAS-09.png" alt="image"></p></li><li><p>配置网络，建议大家选择手动设置，根据自己家里实际的网络配置好ip、掩码<br><img src="http://www.zhangyukunblog.top/NAS-10.png" alt="image"></p></li><li><p>点击完成 -&gt; 等待安装结束</p></li><li><p>浏览器输入刚才设置的ip地址就可以访问NAS的管理界面了<br><img src="http://www.zhangyukunblog.top/NAS-12.png" alt="image"></p><p>  至此黑群辉搭建完成   </p></li></ul><hr><h2 id="二-Frp内网穿透"><a href="#二-Frp内网穿透" class="headerlink" title="二.Frp内网穿透"></a>二.Frp内网穿透</h2><h3 id="1-frp实现的功能"><a href="#1-frp实现的功能" class="headerlink" title="1.frp实现的功能"></a>1.frp实现的功能</h3><ol><li>外网通过ssh访问内网机器</li><li>自定义绑定域名访问内网web服务、家庭NAS、家庭路由器等等处于内网的设备</li></ol><h3 id="2-配置前准备"><a href="#2-配置前准备" class="headerlink" title="2.配置前准备"></a>2.配置前准备</h3><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><table><thead><tr><th>名称</th><th>作用</th></tr></thead><tbody><tr><td>公网服务器1台</td><td>做frp服务器端</td></tr><tr><td>内网服务器1台</td><td>例如家里的路由器、NAS等</td></tr><tr><td>公网服务器绑定域名1个</td><td>用作域名解析</td></tr><tr><td>公网服务器绑定域名1个</td><td>用作域名解析</td></tr><tr><td>公网服务器绑定域名1个</td><td>用作域名解析</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
   
   
 </search>

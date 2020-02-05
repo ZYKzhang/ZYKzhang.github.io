@@ -4,8 +4,29 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Kun&#39;blog">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS, Kun&#39;blog">
+    <meta name="description" content="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS一.搭建黑群晖工具准备
+
+
+名称
+作用
+
+
+
+不用U盘一个
+用作引导盘
+
+
+不用的电脑或者买的微型机
+安装NAS
+
+
+家用电脑
+用于安装和配置NAS
+
+
+芯片无忧
+用于查看U盘的PID和">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +34,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | Kun&#39;blog</title>
+    <title>搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS | Kun&#39;blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -303,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</h1>
                 </div>
             </div>
         </div>
@@ -430,6 +451,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                计算机网络
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -437,7 +467,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-05
+                    2019-08-01
                 </div>
                 
 
@@ -446,7 +476,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    73
+                    632
                 </div>
                 
 
@@ -464,19 +494,107 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h1 id="搭建黑群晖NAS-Frp内网穿透实现外网访问家庭NAS"><a href="#搭建黑群晖NAS-Frp内网穿透实现外网访问家庭NAS" class="headerlink" title="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS"></a>搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</h1><h2 id="一-搭建黑群晖"><a href="#一-搭建黑群晖" class="headerlink" title="一.搭建黑群晖"></a>一.搭建黑群晖</h2><h3 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不用U盘一个</td>
+<td>用作引导盘</td>
+</tr>
+<tr>
+<td>不用的电脑或者买的微型机</td>
+<td>安装NAS</td>
+</tr>
+<tr>
+<td>家用电脑</td>
+<td>用于安装和配置NAS</td>
+</tr>
+<tr>
+<td>芯片无忧</td>
+<td>用于查看U盘的PID和VID</td>
+</tr>
+<tr>
+<td>osfmount</td>
+<td>改写引导映像.img文件里面的PID和VID</td>
+</tr>
+<tr>
+<td>Win32DiskImager</td>
+<td>将映像文件写进U盘</td>
+</tr>
+<tr>
+<td>Synology Assistant</td>
+<td>用于配置NAS</td>
+</tr>
+</tbody></table>
+<h3 id="制作引导盘方法一"><a href="#制作引导盘方法一" class="headerlink" title="制作引导盘方法一"></a>制作引导盘方法一</h3><ul>
+<li><p>下载并安装芯片无忧、osfmount、Win32DiskImager、Synology Assistant</p>
+</li>
+<li><p>把U盘插入家用电脑 -&gt; 打开芯片无忧，会自动读取到U盘的PID和VID -&gt; 截图或用记事本记下来，后面会用到。<br><img src="http://www.zhangyukunblog.top/NAS-01.png" alt="image"></p>
+</li>
+<li><p>打开osfmount，点击左下角的Mount new<br><img src="http://www.zhangyukunblog.top/NAS-02.png" alt="image"></p>
+</li>
+<li><p>选择文件夹中的.img文件，一定注意要<strong>去掉</strong>窗口下面<strong>Read-only。 drvie前面的对号√</strong> -&gt; 点击OK<br><img src="http://www.zhangyukunblog.top/NAS-03-1.png" alt="image"></p>
+</li>
+<li><p>完成后双击打开，进入里面grub文件夹然后打开grub.cfg这个文件，找到并修改<strong>set vid = 0x1234；set vid=0x1234</strong>这两行里面的数字为刚才截图保存的数字。然后保存点击<strong>Dismount all &amp; Exit</strong></p>
+<p>  <img src="http://www.zhangyukunblog.top/NAS-04.png" alt="image"><br><img src="http://www.zhangyukunblog.top/NAS-05.png" alt="image"></p>
+</li>
+<li><p>打开Win32DiskImager软件-&gt;选择img文件的路径-&gt;选择U盘的路径-&gt;点击write<br><img src="http://www.zhangyukunblog.top/NAS-06.png" alt="image"></p>
+<p>  到此U盘引导制作完成</p>
+</li>
+</ul>
+<hr>
+<h3 id="在旧电脑安装DSM"><a href="#在旧电脑安装DSM" class="headerlink" title="在旧电脑安装DSM"></a>在旧电脑安装DSM</h3><ul>
+<li><p>U盘插入旧电脑然后用U盘引导启动，出现下图即表示系统启动成功<br><img src="http://www.zhangyukunblog.top/NAS-07.png" alt="image"></p>
+</li>
+<li><p>在家用电脑上打开Synology Assistant，会自动搜索局域网里面的NAS主机<br><img src="http://www.zhangyukunblog.top/NAS-08.png" alt="image"></p>
+</li>
+<li><p>右键点击搜索到的主机 -&gt; 安装 -&gt; 选择文件夹里面的.pat文件 -&gt; 点击下一步<br><img src="http://www.zhangyukunblog.top/NAS-09.png" alt="image"></p>
+</li>
+<li><p>配置网络，建议大家选择手动设置，根据自己家里实际的网络配置好ip、掩码<br><img src="http://www.zhangyukunblog.top/NAS-10.png" alt="image"></p>
+</li>
+<li><p>点击完成 -&gt; 等待安装结束</p>
+</li>
+<li><p>浏览器输入刚才设置的ip地址就可以访问NAS的管理界面了<br><img src="http://www.zhangyukunblog.top/NAS-12.png" alt="image"></p>
+<p>  至此黑群辉搭建完成   </p>
+</li>
+</ul>
+<hr>
+<h2 id="二-Frp内网穿透"><a href="#二-Frp内网穿透" class="headerlink" title="二.Frp内网穿透"></a>二.Frp内网穿透</h2><h3 id="1-frp实现的功能"><a href="#1-frp实现的功能" class="headerlink" title="1.frp实现的功能"></a>1.frp实现的功能</h3><ol>
+<li>外网通过ssh访问内网机器</li>
+<li>自定义绑定域名访问内网web服务、家庭NAS、家庭路由器等等处于内网的设备</li>
+</ol>
+<h3 id="2-配置前准备"><a href="#2-配置前准备" class="headerlink" title="2.配置前准备"></a>2.配置前准备</h3><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>公网服务器1台</td>
+<td>做frp服务器端</td>
+</tr>
+<tr>
+<td>内网服务器1台</td>
+<td>例如家里的路由器、NAS等</td>
+</tr>
+<tr>
+<td>公网服务器绑定域名1个</td>
+<td>用作域名解析</td>
+</tr>
+<tr>
+<td>公网服务器绑定域名1个</td>
+<td>用作域名解析</td>
+</tr>
+<tr>
+<td>公网服务器绑定域名1个</td>
+<td>用作域名解析</td>
+</tr>
+</tbody></table>
 
             </div>
             <hr/>
@@ -502,7 +620,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/02/05/hello-world/">http://yoursite.com/2020/02/05/hello-world/</a>
+                    <a href="http://yoursite.com/2019/08/01/nas-frp/">http://yoursite.com/2019/08/01/nas-frp/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -703,10 +821,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2020/02/05/hello-world/">
                     <div class="card-image">
@@ -724,9 +841,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -735,7 +852,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -743,7 +859,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
                 <a href="/2019/08/01/nas-frp/">
@@ -798,6 +914,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
