@@ -4,29 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS, Kun&#39;blog">
-    <meta name="description" content="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS一.搭建黑群晖工具准备
-
-
-名称
-作用
-
-
-
-不用U盘一个
-用作引导盘
-
-
-不用的电脑或者买的微型机
-安装NAS
-
-
-家用电脑
-用于安装和配置NAS
-
-
-芯片无忧
-用于查看U盘的PID和">
+    <meta name="keywords" content="交换基础(3)--STP(续), Kun&#39;blog">
+    <meta name="description" content="几种因拓扑变化导致的链路故障浅解认识STP的两种BPDU
+配置BPDU:也就是上篇所说讲到的在选举根桥，根端口，指定端口的过程中用于交换各交换机配置信息的数据包。
+拓扑变化通知BPDU(TCN BPDU)：当交换机需要将拓扑更改信号发出时，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -34,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS | Kun&#39;blog</title>
+    <title>交换基础(3)--STP(续) | Kun&#39;blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -217,12 +198,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</h1>
+                    <h1 class="description center-align post-title">交换基础(3)--STP(续)</h1>
                 </div>
             </div>
         </div>
@@ -360,7 +341,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-01
+                    2017-11-06
                 </div>
                 
 
@@ -382,107 +363,22 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="搭建黑群晖NAS-Frp内网穿透实现外网访问家庭NAS"><a href="#搭建黑群晖NAS-Frp内网穿透实现外网访问家庭NAS" class="headerlink" title="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS"></a>搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</h1><h2 id="一-搭建黑群晖"><a href="#一-搭建黑群晖" class="headerlink" title="一.搭建黑群晖"></a>一.搭建黑群晖</h2><h3 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h3><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>不用U盘一个</td>
-<td>用作引导盘</td>
-</tr>
-<tr>
-<td>不用的电脑或者买的微型机</td>
-<td>安装NAS</td>
-</tr>
-<tr>
-<td>家用电脑</td>
-<td>用于安装和配置NAS</td>
-</tr>
-<tr>
-<td>芯片无忧</td>
-<td>用于查看U盘的PID和VID</td>
-</tr>
-<tr>
-<td>osfmount</td>
-<td>改写引导映像.img文件里面的PID和VID</td>
-</tr>
-<tr>
-<td>Win32DiskImager</td>
-<td>将映像文件写进U盘</td>
-</tr>
-<tr>
-<td>Synology Assistant</td>
-<td>用于配置NAS</td>
-</tr>
-</tbody></table>
-<h3 id="制作引导盘方法一"><a href="#制作引导盘方法一" class="headerlink" title="制作引导盘方法一"></a>制作引导盘方法一</h3><ul>
-<li><p>下载并安装芯片无忧、osfmount、Win32DiskImager、Synology Assistant</p>
-</li>
-<li><p>把U盘插入家用电脑 -&gt; 打开芯片无忧，会自动读取到U盘的PID和VID -&gt; 截图或用记事本记下来，后面会用到。<br><img src="http://www.zhangyukunblog.top/NAS-01.png" alt="image"></p>
-</li>
-<li><p>打开osfmount，点击左下角的Mount new<br><img src="http://www.zhangyukunblog.top/NAS-02.png" alt="image"></p>
-</li>
-<li><p>选择文件夹中的.img文件，一定注意要<strong>去掉</strong>窗口下面<strong>Read-only。 drvie前面的对号√</strong> -&gt; 点击OK<br><img src="http://www.zhangyukunblog.top/NAS-03-1.png" alt="image"></p>
-</li>
-<li><p>完成后双击打开，进入里面grub文件夹然后打开grub.cfg这个文件，找到并修改<strong>set vid = 0x1234；set vid=0x1234</strong>这两行里面的数字为刚才截图保存的数字。然后保存点击<strong>Dismount all &amp; Exit</strong></p>
-<p>  <img src="http://www.zhangyukunblog.top/NAS-04.png" alt="image"><br><img src="http://www.zhangyukunblog.top/NAS-05.png" alt="image"></p>
-</li>
-<li><p>打开Win32DiskImager软件-&gt;选择img文件的路径-&gt;选择U盘的路径-&gt;点击write<br><img src="http://www.zhangyukunblog.top/NAS-06.png" alt="image"></p>
-<p>  到此U盘引导制作完成</p>
-</li>
-</ul>
-<hr>
-<h3 id="在旧电脑安装DSM"><a href="#在旧电脑安装DSM" class="headerlink" title="在旧电脑安装DSM"></a>在旧电脑安装DSM</h3><ul>
-<li><p>U盘插入旧电脑然后用U盘引导启动，出现下图即表示系统启动成功<br><img src="http://www.zhangyukunblog.top/NAS-07.png" alt="image"></p>
-</li>
-<li><p>在家用电脑上打开Synology Assistant，会自动搜索局域网里面的NAS主机<br><img src="http://www.zhangyukunblog.top/NAS-08.png" alt="image"></p>
-</li>
-<li><p>右键点击搜索到的主机 -&gt; 安装 -&gt; 选择文件夹里面的.pat文件 -&gt; 点击下一步<br><img src="http://www.zhangyukunblog.top/NAS-09.png" alt="image"></p>
-</li>
-<li><p>配置网络，建议大家选择手动设置，根据自己家里实际的网络配置好ip、掩码<br><img src="http://www.zhangyukunblog.top/NAS-10.png" alt="image"></p>
-</li>
-<li><p>点击完成 -&gt; 等待安装结束</p>
-</li>
-<li><p>浏览器输入刚才设置的ip地址就可以访问NAS的管理界面了<br><img src="http://www.zhangyukunblog.top/NAS-12.png" alt="image"></p>
-<p>  至此黑群辉搭建完成   </p>
-</li>
-</ul>
-<hr>
-<h2 id="二-Frp内网穿透"><a href="#二-Frp内网穿透" class="headerlink" title="二.Frp内网穿透"></a>二.Frp内网穿透</h2><h3 id="1-frp实现的功能"><a href="#1-frp实现的功能" class="headerlink" title="1.frp实现的功能"></a>1.frp实现的功能</h3><ol>
-<li>外网通过ssh访问内网机器</li>
-<li>自定义绑定域名访问内网web服务、家庭NAS、家庭路由器等等处于内网的设备</li>
+                <h2 id="几种因拓扑变化导致的链路故障浅解"><a href="#几种因拓扑变化导致的链路故障浅解" class="headerlink" title="几种因拓扑变化导致的链路故障浅解"></a>几种因拓扑变化导致的链路故障浅解</h2><h3 id="认识STP的两种BPDU"><a href="#认识STP的两种BPDU" class="headerlink" title="认识STP的两种BPDU"></a>认识STP的两种BPDU</h3><ol>
+<li>配置BPDU:也就是上篇所说讲到的在选举根桥，根端口，指定端口的过程中用于交换各交换机配置信息的数据包。</li>
+<li>拓扑变化通知BPDU(TCN BPDU)：当交换机需要将拓扑更改信号发出时，它便开始通过自己的根端口(root port)发送 TCN，当接受交换机从它的指定端口(designate port)接收到TCN类BPDU时,它必须为其做转发,让它继续从自已的根端口上发送TCN BPDU包,然后给发送者做出回应(回复一个TC字段=1的配置BPDU)，这样一级一级地传到根桥(root bridge)后,TCN的任务才算完成.</li>
 </ol>
-<h3 id="2-配置前准备"><a href="#2-配置前准备" class="headerlink" title="2.配置前准备"></a>2.配置前准备</h3><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>公网服务器1台</td>
-<td>做frp服务器端</td>
-</tr>
-<tr>
-<td>内网服务器1台</td>
-<td>例如家里的路由器、NAS等</td>
-</tr>
-<tr>
-<td>公网服务器绑定域名1个</td>
-<td>用作域名解析</td>
-</tr>
-<tr>
-<td>公网服务器绑定域名1个</td>
-<td>用作域名解析</td>
-</tr>
-<tr>
-<td>公网服务器绑定域名1个</td>
-<td>用作域名解析</td>
-</tr>
-</tbody></table>
+<h3 id="认识几种计时器"><a href="#认识几种计时器" class="headerlink" title="认识几种计时器"></a>认识几种计时器</h3><ol>
+<li><p>Max Age：端口的BPDU老化时间，端口会根据接收到的BPDU存储所接收到的最好的四个信息（根桥BID、累计根路径开销、发送者BID和发送端口PID）。每次接收到合适的BPDU，端口都会启动这个Max Age计时器。超过这个MaxAge时间端口接收不到合适BPDU，就会认为网络直径过大。这个时间默认为20秒。</p>
+</li>
+<li><p>Forwarding Delay Timer：指一个端口Listening和Learning的各自时间，默认为15秒，即Listening状态持续15秒，随后Learning状态再持续15秒。这两个状态下的端口会处于Blocking状态，这是STP用于避免临时环路的关键。</p>
+</li>
+<li><p>Hello Timer：STP交换机发送BPDU的时间间隔。当网络拓扑稳定之后，该计时器的修改只有在根桥修改才有效。根桥会在之后发出的BPDU中填充适当的字段以向其他非根桥传递该计时器修改信息。但当拓扑变化之后，TCN BPDU的发送不受这个计时器的管理。</p>
+</li>
+</ol>
+<p>###几种链路故障</p>
+<h4 id="根桥故障"><a href="#根桥故障" class="headerlink" title="根桥故障"></a>根桥故障</h4><p>根桥down掉之后，非根桥在BPDU老化之后重新选举根桥，原来的y预备端口在选举过程中要进行端口状态的转变，从blocking-&gt;listing-&gt;learning-&gt;forwarding经过2倍的Forwarding<br>Delay=30s后链路重新收敛，此过程大致花费50s左右<br><img src="http://www.zhangyukunblog.top/%E6%A0%B9%E6%A1%A5%E6%95%85%E9%9A%9C.jpg" alt="!image"></p>
+<h3 id="直连链路故障"><a href="#直连链路故障" class="headerlink" title="直连链路故障"></a>直连链路故障</h3><p>SWB检测到直连链路发生故障，预备端口开始端口状态的转换，从blocking-&gt;listing-&gt;learning-&gt;forwarding经过2倍的Forwarding.Delay时间转换成为根端口，此过程花费30s。<br><img src="http://www.zhangyukunblog.top/%E7%9B%B4%E8%BF%9E%E9%93%BE%E8%B7%AF%E6%95%85%E9%9A%9C.png" alt="image"></p>
+<h3 id="非直连链路故障"><a href="#非直连链路故障" class="headerlink" title="非直连链路故障"></a>非直连链路故障</h3><p>当如下图所示位置断开连接，SWB是检测不到链路发生故障的，但是SWB一直接收不到来自根桥的BPDU，Max Age超时后，SWB认为根桥故障了，它开始发送自己的BPDU，SWC的预备端口能收到来自SWB的BPDU，根端口能收到来自根桥的BPDU，显然，在比较优先级后就会不理会来自SWB的BPDU，但SWC的预备端口迟迟收不到来自根桥的BPDU，就会进行端口的状态转换，时间为2倍的Forwarding.Delay，所以此过程花费50s.<br><img src="http://www.zhangyukunblog.top/%E9%9D%9E%E7%9B%B4%E8%BF%9E%E9%93%BE%E8%B7%AF%E6%95%85%E9%9A%9C.png" alt="image"></p>
 
             </div>
             <hr/>
@@ -508,7 +404,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2019/08/01/nas-frp/">http://yoursite.com/2019/08/01/nas-frp/</a>
+                    <a href="http://yoursite.com/2017/11/06/ji-chong-yin-tuo-bu-bian-hua-dao-zhi-de-lian-lu-gu-zhang-qian-jie/">http://yoursite.com/2017/11/06/ji-chong-yin-tuo-bu-bian-hua-dao-zhi-de-lian-lu-gu-zhang-qian-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -709,64 +605,42 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/08/01/nas-frp/">
+                <a href="/2018/03/09/shell-bian-liang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="shell入门——变量">
                         
-                        <span class="card-title">搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</span>
+                        <span class="card-title">shell入门——变量</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS一.搭建黑群晖工具准备
-
-
-名称
-作用
-
-
-
-不用U盘一个
-用作引导盘
-
-
-不用的电脑或者买的微型机
-安装NAS
-
-
-家用电脑
-用于安装和配置NAS
-
-
-芯片无忧
-用于查看U盘的PID和
+                            shell变量1. 使用变量：加美元符12your_name&#x3D;&quot;zhangyk&quot;echo $your_name #花括号作用是识别变量边界
+2. 只读变量readonly12Url&#x3D;&quot;htt
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-01
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-03-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
-                                    计算机网络
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -777,52 +651,38 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/03/13/shell-can-shu-chuan-di/">
+                <a href="/2017/10/26/jiao-huan-ji-ji-chu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="shell入门——参数的传递和数组">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="交换基础(1)--交换机">
                         
-                        <span class="card-title">shell入门——参数的传递和数组</span>
+                        <span class="card-title">交换基础(1)--交换机</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            shell传递参数
+                            交换机基础交换机的作用交换机工作在OSI的数据链路层，操作对象为数据帧。在收到数据帧后，交换机会根据数据帧的头部信息对数据帧进行转发（隔离冲突域）
+交换机的MAC地址表（转发表）
 
 
-参数
-说明
-
-
-
-$0
-当前脚本的文件名
-
-
-n
-传递给脚本或函数的参数。n是一个数字，表示第几个参数。例如,第一个参数是$1，第二个参数是$2
-
-
-$#
-传递给脚本或函数的参数个数。
-
-
-$*
-传递给脚本或函数的所
+Vlan
+MAC Address
+Type
+Interf
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-03-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-10-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                    计算机网络
                                 </a>
                             
                             

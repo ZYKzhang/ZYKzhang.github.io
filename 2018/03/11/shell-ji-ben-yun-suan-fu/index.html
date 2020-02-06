@@ -4,29 +4,18 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS, Kun&#39;blog">
-    <meta name="description" content="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS一.搭建黑群晖工具准备
+    <meta name="keywords" content="shell入门——基本运算符, Kun&#39;blog">
+    <meta name="description" content="shell基本运算符类别介绍
+算术运算符
+关系运算符
+布尔运算符
+字符串运算符
+文件测试运算符
 
-
-名称
-作用
-
-
-
-不用U盘一个
-用作引导盘
-
-
-不用的电脑或者买的微型机
-安装NAS
-
-
-家用电脑
-用于安装和配置NAS
-
-
-芯片无忧
-用于查看U盘的PID和">
+几点注意
+在进行求值操作时要使用expr
+表达式和运算符之间必须要有空格
+算数表达式要完全被``包含12a&amp;#x3D;&amp;#96;expr 2 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -34,7 +23,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS | Kun&#39;blog</title>
+    <title>shell入门——基本运算符 | Kun&#39;blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -217,12 +206,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</h1>
+                    <h1 class="description center-align post-title">shell入门——基本运算符</h1>
                 </div>
             </div>
         </div>
@@ -347,8 +336,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
-                                计算机网络
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
                             </a>
                         
                     </div>
@@ -360,7 +349,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-01
+                    2018-03-11
                 </div>
                 
 
@@ -382,108 +371,240 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="搭建黑群晖NAS-Frp内网穿透实现外网访问家庭NAS"><a href="#搭建黑群晖NAS-Frp内网穿透实现外网访问家庭NAS" class="headerlink" title="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS"></a>搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</h1><h2 id="一-搭建黑群晖"><a href="#一-搭建黑群晖" class="headerlink" title="一.搭建黑群晖"></a>一.搭建黑群晖</h2><h3 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h3><table>
+                <h2 id="shell基本运算符"><a href="#shell基本运算符" class="headerlink" title="shell基本运算符"></a>shell基本运算符</h2><h3 id="类别介绍"><a href="#类别介绍" class="headerlink" title="类别介绍"></a>类别介绍</h3><ul>
+<li>算术运算符</li>
+<li>关系运算符</li>
+<li>布尔运算符</li>
+<li>字符串运算符</li>
+<li>文件测试运算符</li>
+</ul>
+<h3 id="几点注意"><a href="#几点注意" class="headerlink" title="几点注意"></a>几点注意</h3><ul>
+<li>在进行求值操作时要使用expr</li>
+<li>表达式和运算符之间必须要有空格</li>
+<li>算数表达式要完全被``包含<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a&#x3D;&#96;expr 2 + 2&#96;</span><br><span class="line">echo &quot;两数之和为 : $a&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a><strong>算数运算符</strong></h3><table>
 <thead>
 <tr>
-<th>名称</th>
-<th>作用</th>
+<th align="center">运算符</th>
+<th align="center">说明</th>
+<th align="center">使用举例</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>不用U盘一个</td>
-<td>用作引导盘</td>
+<td align="center">+</td>
+<td align="center">加法</td>
+<td align="center"><code>expr $a + $b</code></td>
 </tr>
 <tr>
-<td>不用的电脑或者买的微型机</td>
-<td>安装NAS</td>
+<td align="center">-</td>
+<td align="center">减法</td>
+<td align="center"><code>expr $a - $b</code></td>
 </tr>
 <tr>
-<td>家用电脑</td>
-<td>用于安装和配置NAS</td>
+<td align="center">*</td>
+<td align="center">乘法</td>
+<td align="center"><code>expr $a \* $b</code></td>
 </tr>
 <tr>
-<td>芯片无忧</td>
-<td>用于查看U盘的PID和VID</td>
+<td align="center">/</td>
+<td align="center">除法</td>
+<td align="center"><code>expr $a / $b</code></td>
 </tr>
 <tr>
-<td>osfmount</td>
-<td>改写引导映像.img文件里面的PID和VID</td>
+<td align="center">%</td>
+<td align="center">取余</td>
+<td align="center"><code>expr $a % $b</code></td>
 </tr>
 <tr>
-<td>Win32DiskImager</td>
-<td>将映像文件写进U盘</td>
+<td align="center">=</td>
+<td align="center">赋值</td>
+<td align="center">a = $b 将变量b的值赋给a</td>
 </tr>
 <tr>
-<td>Synology Assistant</td>
-<td>用于配置NAS</td>
+<td align="center">==</td>
+<td align="center">判相等，相同为true</td>
+<td align="center">[ $a == $b ]</td>
+</tr>
+<tr>
+<td align="center">!=</td>
+<td align="center">判不等，不等为true</td>
+<td align="center">[ $a != $b ]</td>
 </tr>
 </tbody></table>
-<h3 id="制作引导盘方法一"><a href="#制作引导盘方法一" class="headerlink" title="制作引导盘方法一"></a>制作引导盘方法一</h3><ul>
-<li><p>下载并安装芯片无忧、osfmount、Win32DiskImager、Synology Assistant</p>
-</li>
-<li><p>把U盘插入家用电脑 -&gt; 打开芯片无忧，会自动读取到U盘的PID和VID -&gt; 截图或用记事本记下来，后面会用到。<br><img src="http://www.zhangyukunblog.top/NAS-01.png" alt="image"></p>
-</li>
-<li><p>打开osfmount，点击左下角的Mount new<br><img src="http://www.zhangyukunblog.top/NAS-02.png" alt="image"></p>
-</li>
-<li><p>选择文件夹中的.img文件，一定注意要<strong>去掉</strong>窗口下面<strong>Read-only。 drvie前面的对号√</strong> -&gt; 点击OK<br><img src="http://www.zhangyukunblog.top/NAS-03-1.png" alt="image"></p>
-</li>
-<li><p>完成后双击打开，进入里面grub文件夹然后打开grub.cfg这个文件，找到并修改<strong>set vid = 0x1234；set vid=0x1234</strong>这两行里面的数字为刚才截图保存的数字。然后保存点击<strong>Dismount all &amp; Exit</strong></p>
-<p>  <img src="http://www.zhangyukunblog.top/NAS-04.png" alt="image"><br><img src="http://www.zhangyukunblog.top/NAS-05.png" alt="image"></p>
-</li>
-<li><p>打开Win32DiskImager软件-&gt;选择img文件的路径-&gt;选择U盘的路径-&gt;点击write<br><img src="http://www.zhangyukunblog.top/NAS-06.png" alt="image"></p>
-<p>  到此U盘引导制作完成</p>
 </li>
 </ul>
-<hr>
-<h3 id="在旧电脑安装DSM"><a href="#在旧电脑安装DSM" class="headerlink" title="在旧电脑安装DSM"></a>在旧电脑安装DSM</h3><ul>
-<li><p>U盘插入旧电脑然后用U盘引导启动，出现下图即表示系统启动成功<br><img src="http://www.zhangyukunblog.top/NAS-07.png" alt="image"></p>
-</li>
-<li><p>在家用电脑上打开Synology Assistant，会自动搜索局域网里面的NAS主机<br><img src="http://www.zhangyukunblog.top/NAS-08.png" alt="image"></p>
-</li>
-<li><p>右键点击搜索到的主机 -&gt; 安装 -&gt; 选择文件夹里面的.pat文件 -&gt; 点击下一步<br><img src="http://www.zhangyukunblog.top/NAS-09.png" alt="image"></p>
-</li>
-<li><p>配置网络，建议大家选择手动设置，根据自己家里实际的网络配置好ip、掩码<br><img src="http://www.zhangyukunblog.top/NAS-10.png" alt="image"></p>
-</li>
-<li><p>点击完成 -&gt; 等待安装结束</p>
-</li>
-<li><p>浏览器输入刚才设置的ip地址就可以访问NAS的管理界面了<br><img src="http://www.zhangyukunblog.top/NAS-12.png" alt="image"></p>
-<p>  至此黑群辉搭建完成   </p>
-</li>
-</ul>
-<hr>
-<h2 id="二-Frp内网穿透"><a href="#二-Frp内网穿透" class="headerlink" title="二.Frp内网穿透"></a>二.Frp内网穿透</h2><h3 id="1-frp实现的功能"><a href="#1-frp实现的功能" class="headerlink" title="1.frp实现的功能"></a>1.frp实现的功能</h3><ol>
-<li>外网通过ssh访问内网机器</li>
-<li>自定义绑定域名访问内网web服务、家庭NAS、家庭路由器等等处于内网的设备</li>
+<p><strong>注意</strong>：</p>
+<ol>
+<li>乘号(*)前边必须加反斜杠(\)转义才能实现乘法运算；</li>
+<li>条件表达式要放在方括号之间，并且要有空格，例如: [$a==$b] 是错误的，必须写成 [ $a == $b ]。</li>
 </ol>
-<h3 id="2-配置前准备"><a href="#2-配置前准备" class="headerlink" title="2.配置前准备"></a>2.配置前准备</h3><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><table>
+<p><strong>实例</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line"></span><br><span class="line">a&#x3D;10</span><br><span class="line">b&#x3D;20</span><br><span class="line"></span><br><span class="line">val&#x3D;&#96;expr $a + $b&#96;</span><br><span class="line">echo &quot;a + b : $val&quot;</span><br><span class="line"></span><br><span class="line">val&#x3D;&#96;expr $a - $b&#96;</span><br><span class="line">echo &quot;a - b : $val&quot;</span><br><span class="line"></span><br><span class="line">val&#x3D;&#96;expr $a \* $b&#96;</span><br><span class="line">echo &quot;a * b : $val&quot;</span><br><span class="line"></span><br><span class="line">val&#x3D;&#96;expr $b &#x2F; $a&#96;</span><br><span class="line">echo &quot;b &#x2F; a : $val&quot;</span><br><span class="line"></span><br><span class="line">val&#x3D;&#96;expr $b % $a&#96;</span><br><span class="line">echo &quot;b % a : $val&quot;</span><br><span class="line"></span><br><span class="line">if [ $a &#x3D;&#x3D; $b ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;a 等于 b&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;a 不等于 b&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>输出结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a + b : 30</span><br><span class="line">a - b : -10</span><br><span class="line">a * b : 200</span><br><span class="line">b &#x2F; a : 2</span><br><span class="line">b % a : 0</span><br><span class="line">a 不等于 b</span><br></pre></td></tr></table></figure>
+<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a><strong>关系运算符</strong></h3><p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字<br>假设a=20; b=30.</p>
+<table>
 <thead>
 <tr>
-<th>名称</th>
-<th>作用</th>
+<th align="center">运算符</th>
+<th align="center">说明</th>
+<th align="center">使用举例</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>公网服务器1台</td>
-<td>做frp服务器端</td>
+<td align="center">-eq</td>
+<td align="center">两个变量相等 返回 true</td>
+<td align="center">[ $a -eq $b ] 返回false</td>
 </tr>
 <tr>
-<td>内网服务器1台</td>
-<td>例如家里的路由器、NAS等</td>
+<td align="center">-ne</td>
+<td align="center">两个变量不相等 返回 true</td>
+<td align="center">[ $a -ne $b ] 返回true</td>
 </tr>
 <tr>
-<td>公网服务器绑定域名1个</td>
-<td>用作域名解析</td>
+<td align="center">-gt</td>
+<td align="center">左变量 &gt; 右变量  返回true</td>
+<td align="center">[ $a -gt $b ] 返回false</td>
 </tr>
 <tr>
-<td>公网服务器绑定域名1个</td>
-<td>用作域名解析</td>
+<td align="center">-lt</td>
+<td align="center">左变量 &lt; 右变量  返回true</td>
+<td align="center">[ $a -lt $b ] 返回true</td>
 </tr>
 <tr>
-<td>公网服务器绑定域名1个</td>
-<td>用作域名解析</td>
+<td align="center">-ge</td>
+<td align="center">左变量 &gt;= 右变量  返回true</td>
+<td align="center">[ $a -ge $b ] 返回false</td>
+</tr>
+<tr>
+<td align="center">-le</td>
+<td align="center">左变量 &lt;= 右变量  返回true</td>
+<td align="center">[ $a -le $b ] 返回true</td>
+</tr>
+<tr>
+<td align="center"><strong>注意</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">表达式要放在方括号之间，并且要有空格，[ $a -gt $b ]。</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 </tbody></table>
-
+<h3 id="字符串运算符"><a href="#字符串运算符" class="headerlink" title="字符串运算符"></a><strong>字符串运算符</strong></h3><p>假设a=“zyk”;b=“xy”.</p>
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">说明</th>
+<th align="center">使用举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">=</td>
+<td align="center">两个字符串相等 返回true</td>
+<td align="center">[ $a = $b ] 返回false</td>
+</tr>
+<tr>
+<td align="center">!=</td>
+<td align="center">两个变量不相等 返回 true</td>
+<td align="center">[ $a ！= $b ] 返回true</td>
+</tr>
+<tr>
+<td align="center">z</td>
+<td align="center">字符串长度为0  返回true</td>
+<td align="center">[ -z $a ] 返回false</td>
+</tr>
+<tr>
+<td align="center">n</td>
+<td align="center">字符串长度不为0  返回true</td>
+<td align="center">[ -n $a ] 返回true</td>
+</tr>
+<tr>
+<td align="center">str</td>
+<td align="center">字符串不为空  返回true</td>
+<td align="center">[ $a ] 返回true</td>
+</tr>
+</tbody></table>
+<h3 id="文件测试运算符"><a href="#文件测试运算符" class="headerlink" title="文件测试运算符"></a><strong>文件测试运算符</strong></h3><p>file=”/shell-script/sh02.sh”</p>
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">说明</th>
+<th align="center">使用举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-b</td>
+<td align="center">文件是块设备文件 返回true</td>
+<td align="center">[ -b $file ]返回false</td>
+</tr>
+<tr>
+<td align="center">-c</td>
+<td align="center">文件是字符设备文件 返回 true</td>
+<td align="center">[ -c $file ]返回false</td>
+</tr>
+<tr>
+<td align="center">-d</td>
+<td align="center">文件是目录文件 返回true</td>
+<td align="center">[ -d $file ]返回false</td>
+</tr>
+<tr>
+<td align="center">-f</td>
+<td align="center">文件是普通文件(不是目录也不是设备文件)返回 true</td>
+<td align="center">[ -f $file ]返回true</td>
+</tr>
+<tr>
+<td align="center">-g</td>
+<td align="center">文件设置了<a href="http://blog.csdn.net/turkeyzhou/article/details/2408222" target="_blank" rel="noopener">SGID位</a>  返回true</td>
+<td align="center">[ -g $file ]返回false</td>
+</tr>
+<tr>
+<td align="center">-k</td>
+<td align="center">文件设置了<a href="http://blog.csdn.net/baoendemao/article/details/52847641" target="_blank" rel="noopener">粘着位</a>  返回true</td>
+<td align="center">[ -k $file]返回false</td>
+</tr>
+<tr>
+<td align="center">-p</td>
+<td align="center">文件是有名管道 返回true</td>
+<td align="center">[ -p $file ]返回false</td>
+</tr>
+<tr>
+<td align="center">-u</td>
+<td align="center">文件设置了<a href="http://blog.csdn.net/turkeyzhou/article/details/2408222" target="_blank" rel="noopener">SUID位</a>  返回true</td>
+<td align="center">[ -u $file ]返回false</td>
+</tr>
+<tr>
+<td align="center">-r</td>
+<td align="center">文件可读  返回true</td>
+<td align="center">[ -r $file ]返回 true</td>
+</tr>
+<tr>
+<td align="center">-w</td>
+<td align="center">文件可写  返回true</td>
+<td align="center">[ -w $file ] 返回true</td>
+</tr>
+<tr>
+<td align="center">-x</td>
+<td align="center">文件可执行  返回true</td>
+<td align="center">[ -x $file ] 返回true</td>
+</tr>
+<tr>
+<td align="center">-s</td>
+<td align="center">文件不为空  返回true</td>
+<td align="center">[ -s $file ] 返回true</td>
+</tr>
+<tr>
+<td align="center">-e</td>
+<td align="center">文件存在  返回true</td>
+<td align="center">[ -e $file ] 返回true</td>
+</tr>
+</tbody></table>
+<p> <strong>用法实例</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">file&#x3D;&quot;&#x2F;shell-script&#x2F;sh02.sh&quot;</span><br><span class="line">if [ -r $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件可读&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件不可读&quot;</span><br><span class="line">fi</span><br><span class="line">if [ -w $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件可写&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件不可写&quot;</span><br><span class="line">fi</span><br><span class="line">if [ -x $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件可执行&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件不可执行&quot;</span><br><span class="line">fi</span><br><span class="line">if [ -f $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件为普通文件&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件为特殊文件&quot;</span><br><span class="line">fi</span><br><span class="line">if [ -d $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件是个目录&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件不是个目录&quot;</span><br><span class="line">fi</span><br><span class="line">if [ -s $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件不为空&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件为空&quot;</span><br><span class="line">fi</span><br><span class="line">if [ -e $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件存在&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件不存在&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h3 id="shell注释的用法"><a href="#shell注释的用法" class="headerlink" title="shell注释的用法"></a><strong>shell注释的用法</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!bin&#x2F;bash</span><br><span class="line"># echo &quot;我是单行注释，你看不到我&quot;</span><br><span class="line"></span><br><span class="line">:&lt;&lt;!</span><br><span class="line">echo &quot;我是多行注释1，你看不到我&quot;</span><br><span class="line">echo &quot;我是多行注释2，你看不到我&quot;</span><br><span class="line">!</span><br><span class="line"></span><br><span class="line"># 其实!可以随意命名，只要别跟中间的注释内容相同即可。当Shell脚本执行遇到:&lt;&lt;!，就不执行脚本了，一直到再碰!后才重新开始执行脚本。如果忘记!或者写错(由于已经不执行脚本了，所以即使写错也不会报错)，则:&lt;&lt;!之后的脚步将都不会执行。</span><br></pre></td></tr></table></figure>
             </div>
             <hr/>
 
@@ -508,7 +629,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2019/08/01/nas-frp/">http://yoursite.com/2019/08/01/nas-frp/</a>
+                    <a href="http://yoursite.com/2018/03/11/shell-ji-ben-yun-suan-fu/">http://yoursite.com/2018/03/11/shell-ji-ben-yun-suan-fu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -709,73 +830,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
-            <div class="card">
-                <a href="/2019/08/01/nas-frp/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS">
-                        
-                        <span class="card-title">搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS一.搭建黑群晖工具准备
-
-
-名称
-作用
-
-
-
-不用U盘一个
-用作引导盘
-
-
-不用的电脑或者买的微型机
-安装NAS
-
-
-家用电脑
-用于安装和配置NAS
-
-
-芯片无忧
-用于查看U盘的PID和
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-01
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
-                                    计算机网络
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-            </div>
-        </div>
-        
-        
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/2018/03/13/shell-can-shu-chuan-di/">
                     <div class="card-image">
@@ -814,8 +871,50 @@ $*
                         
                     </div>
                     <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-03-13
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/03/09/shell-bian-liang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="shell入门——变量">
+                        
+                        <span class="card-title">shell入门——变量</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            shell变量1. 使用变量：加美元符12your_name&#x3D;&quot;zhangyk&quot;echo $your_name #花括号作用是识别变量边界
+2. 只读变量readonly12Url&#x3D;&quot;htt
+                        
+                    </div>
+                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-03-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-03-09
                             </span>
                         <span class="publish-author">
                             

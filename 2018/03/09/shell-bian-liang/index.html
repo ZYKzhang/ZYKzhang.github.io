@@ -4,29 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS, Kun&#39;blog">
-    <meta name="description" content="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS一.搭建黑群晖工具准备
-
-
-名称
-作用
-
-
-
-不用U盘一个
-用作引导盘
-
-
-不用的电脑或者买的微型机
-安装NAS
-
-
-家用电脑
-用于安装和配置NAS
-
-
-芯片无忧
-用于查看U盘的PID和">
+    <meta name="keywords" content="shell入门——变量, Kun&#39;blog">
+    <meta name="description" content="shell变量1. 使用变量：加美元符12your_name&amp;#x3D;&amp;quot;zhangyk&amp;quot;echo $your_name #花括号作用是识别变量边界
+2. 只读变量readonly12Url&amp;#x3D;&amp;quot;htt">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -34,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS | Kun&#39;blog</title>
+    <title>shell入门——变量 | Kun&#39;blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -217,12 +197,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</h1>
+                    <h1 class="description center-align post-title">shell入门——变量</h1>
                 </div>
             </div>
         </div>
@@ -347,8 +327,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
-                                计算机网络
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
                             </a>
                         
                     </div>
@@ -360,7 +340,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-01
+                    2018-03-09
                 </div>
                 
 
@@ -382,107 +362,39 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="搭建黑群晖NAS-Frp内网穿透实现外网访问家庭NAS"><a href="#搭建黑群晖NAS-Frp内网穿透实现外网访问家庭NAS" class="headerlink" title="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS"></a>搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</h1><h2 id="一-搭建黑群晖"><a href="#一-搭建黑群晖" class="headerlink" title="一.搭建黑群晖"></a>一.搭建黑群晖</h2><h3 id="工具准备"><a href="#工具准备" class="headerlink" title="工具准备"></a>工具准备</h3><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>不用U盘一个</td>
-<td>用作引导盘</td>
-</tr>
-<tr>
-<td>不用的电脑或者买的微型机</td>
-<td>安装NAS</td>
-</tr>
-<tr>
-<td>家用电脑</td>
-<td>用于安装和配置NAS</td>
-</tr>
-<tr>
-<td>芯片无忧</td>
-<td>用于查看U盘的PID和VID</td>
-</tr>
-<tr>
-<td>osfmount</td>
-<td>改写引导映像.img文件里面的PID和VID</td>
-</tr>
-<tr>
-<td>Win32DiskImager</td>
-<td>将映像文件写进U盘</td>
-</tr>
-<tr>
-<td>Synology Assistant</td>
-<td>用于配置NAS</td>
-</tr>
-</tbody></table>
-<h3 id="制作引导盘方法一"><a href="#制作引导盘方法一" class="headerlink" title="制作引导盘方法一"></a>制作引导盘方法一</h3><ul>
-<li><p>下载并安装芯片无忧、osfmount、Win32DiskImager、Synology Assistant</p>
-</li>
-<li><p>把U盘插入家用电脑 -&gt; 打开芯片无忧，会自动读取到U盘的PID和VID -&gt; 截图或用记事本记下来，后面会用到。<br><img src="http://www.zhangyukunblog.top/NAS-01.png" alt="image"></p>
-</li>
-<li><p>打开osfmount，点击左下角的Mount new<br><img src="http://www.zhangyukunblog.top/NAS-02.png" alt="image"></p>
-</li>
-<li><p>选择文件夹中的.img文件，一定注意要<strong>去掉</strong>窗口下面<strong>Read-only。 drvie前面的对号√</strong> -&gt; 点击OK<br><img src="http://www.zhangyukunblog.top/NAS-03-1.png" alt="image"></p>
-</li>
-<li><p>完成后双击打开，进入里面grub文件夹然后打开grub.cfg这个文件，找到并修改<strong>set vid = 0x1234；set vid=0x1234</strong>这两行里面的数字为刚才截图保存的数字。然后保存点击<strong>Dismount all &amp; Exit</strong></p>
-<p>  <img src="http://www.zhangyukunblog.top/NAS-04.png" alt="image"><br><img src="http://www.zhangyukunblog.top/NAS-05.png" alt="image"></p>
-</li>
-<li><p>打开Win32DiskImager软件-&gt;选择img文件的路径-&gt;选择U盘的路径-&gt;点击write<br><img src="http://www.zhangyukunblog.top/NAS-06.png" alt="image"></p>
-<p>  到此U盘引导制作完成</p>
-</li>
+                <h2 id="shell变量"><a href="#shell变量" class="headerlink" title="shell变量"></a>shell变量</h2><h3 id="1-使用变量：加美元符"><a href="#1-使用变量：加美元符" class="headerlink" title="1. 使用变量：加美元符"></a>1. 使用变量：加美元符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">your_name&#x3D;&quot;zhangyk&quot;</span><br><span class="line">echo $your_name #花括号作用是识别变量边界</span><br></pre></td></tr></table></figure>
+<h3 id="2-只读变量readonly"><a href="#2-只读变量readonly" class="headerlink" title="2. 只读变量readonly"></a>2. 只读变量readonly</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Url&#x3D;&quot;http:&#x2F;&#x2F;www.zhangyukun.top&quot;</span><br><span class="line">readonly Url  #这样定义后变量的值不能被改变</span><br></pre></td></tr></table></figure>
+<h3 id="3-删除变量"><a href="#3-删除变量" class="headerlink" title="3. 删除变量"></a>3. 删除变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unset your_name  #变量被删除后不能再次使用，不能删除readonly变量</span><br></pre></td></tr></table></figure>
+<h3 id="4-将命令的结果赋值给变量"><a href="#4-将命令的结果赋值给变量" class="headerlink" title="4.将命令的结果赋值给变量"></a>4.将命令的结果赋值给变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">variable&#x3D;&#96;command&#96;  #注意是反引号不是单引号</span><br><span class="line">variable&#x3D;$(command)  #两种方式皆可，但第一种容易混淆。</span><br><span class="line">ex:</span><br><span class="line">log&#x3D;$(cat log.txt)</span><br><span class="line">echo $log</span><br><span class="line">[2018-03-8 20:53:22] 张昱昆正在学习Shell基础</span><br></pre></td></tr></table></figure>
+<h3 id="5-三种变量类型"><a href="#5-三种变量类型" class="headerlink" title="5.三种变量类型"></a>5.三种变量类型</h3><ul>
+<li>局部变量：局部变量在脚本或命令中定义，仅在当前shell实例中有效，其他shell启动的程序不能访问局部变量。</li>
+<li>环境变量：所有的程序，包括shell启动的程序，都能访问环境变量，有些程序需要环境变量来保证其正常运行。必要的时候shell脚本也可以定义环境变量。（类似c的全局变量）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export $your_name</span><br></pre></td></tr></table></figure></li>
+<li>shell变量：shell变量是由shell程序设置的特殊变量。shell变量中有一部分是环境变量，有一部分是局部变量，这些变量保证了shell的正常运行<h2 id="Shell-字符串"><a href="#Shell-字符串" class="headerlink" title="Shell 字符串"></a>Shell 字符串</h2>字符串是shell编程中最常用最有用的数据类型（除了数字和字符串，也没啥其它类型好用了），字符串可以用单引号，也可以用双引号。</li>
 </ul>
-<hr>
-<h3 id="在旧电脑安装DSM"><a href="#在旧电脑安装DSM" class="headerlink" title="在旧电脑安装DSM"></a>在旧电脑安装DSM</h3><ul>
-<li><p>U盘插入旧电脑然后用U盘引导启动，出现下图即表示系统启动成功<br><img src="http://www.zhangyukunblog.top/NAS-07.png" alt="image"></p>
-</li>
-<li><p>在家用电脑上打开Synology Assistant，会自动搜索局域网里面的NAS主机<br><img src="http://www.zhangyukunblog.top/NAS-08.png" alt="image"></p>
-</li>
-<li><p>右键点击搜索到的主机 -&gt; 安装 -&gt; 选择文件夹里面的.pat文件 -&gt; 点击下一步<br><img src="http://www.zhangyukunblog.top/NAS-09.png" alt="image"></p>
-</li>
-<li><p>配置网络，建议大家选择手动设置，根据自己家里实际的网络配置好ip、掩码<br><img src="http://www.zhangyukunblog.top/NAS-10.png" alt="image"></p>
-</li>
-<li><p>点击完成 -&gt; 等待安装结束</p>
-</li>
-<li><p>浏览器输入刚才设置的ip地址就可以访问NAS的管理界面了<br><img src="http://www.zhangyukunblog.top/NAS-12.png" alt="image"></p>
-<p>  至此黑群辉搭建完成   </p>
-</li>
-</ul>
-<hr>
-<h2 id="二-Frp内网穿透"><a href="#二-Frp内网穿透" class="headerlink" title="二.Frp内网穿透"></a>二.Frp内网穿透</h2><h3 id="1-frp实现的功能"><a href="#1-frp实现的功能" class="headerlink" title="1.frp实现的功能"></a>1.frp实现的功能</h3><ol>
-<li>外网通过ssh访问内网机器</li>
-<li>自定义绑定域名访问内网web服务、家庭NAS、家庭路由器等等处于内网的设备</li>
-</ol>
-<h3 id="2-配置前准备"><a href="#2-配置前准备" class="headerlink" title="2.配置前准备"></a>2.配置前准备</h3><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>公网服务器1台</td>
-<td>做frp服务器端</td>
-</tr>
-<tr>
-<td>内网服务器1台</td>
-<td>例如家里的路由器、NAS等</td>
-</tr>
-<tr>
-<td>公网服务器绑定域名1个</td>
-<td>用作域名解析</td>
-</tr>
-<tr>
-<td>公网服务器绑定域名1个</td>
-<td>用作域名解析</td>
-</tr>
-<tr>
-<td>公网服务器绑定域名1个</td>
-<td>用作域名解析</td>
-</tr>
-</tbody></table>
+<h3 id="1-单引号和双引号的区别"><a href="#1-单引号和双引号的区别" class="headerlink" title="1. 单引号和双引号的区别"></a>1. 单引号和双引号的区别</h3><p>以单引号<strong>‘ ‘</strong>包围变量的值时，单引号里面是什么就输出什么，即使内容中有变量和命令（命令需要反引起来）也会把它们原样输出。这种方式比较适合定义显示纯字符串的情况，即不希望解析变量、命令等的场景。</p>
+<p>以双引号<strong>“ “</strong>包围变量的值时，输出时会先解析里面的变量和命令，而不是把双引号中的变量名和命令原样输出。这种方式比较适合字符串中附带有变量和命令并且想将其解析后再输出的变量定义。</p>
+<p>如下代码说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">url&#x3D;&quot;http:&#x2F;&#x2F;zhangyukun.top&quot;</span><br><span class="line">website1&#x3D;&#39;kun&#39;s blog：$&#123;url&#125;&#39;</span><br><span class="line">website2&#x3D;&quot;kun&#39;s blog：$&#123;url&#125;&quot;</span><br><span class="line">echo $website1</span><br><span class="line">echo $&#123;website2&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kun&#39;s blog：$&#123;url&#125;</span><br><span class="line">kun&#39;s blog：http:&#x2F;&#x2F;zhangyukun.top</span><br></pre></td></tr></table></figure>
+<h3 id="2-获取字符串长度"><a href="#2-获取字符串长度" class="headerlink" title="2. 获取字符串长度"></a>2. 获取字符串长度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">str&#x3D;“abc,def,ghi,abcjkl”  </span><br><span class="line">echo $&#123;#str&#125; #在花括号中给变量名前加#号</span><br><span class="line">#运行结果</span><br><span class="line">18</span><br></pre></td></tr></table></figure>
+<h3 id="3-字符串的截取"><a href="#3-字符串的截取" class="headerlink" title="3. 字符串的截取"></a>3. 字符串的截取</h3><h4 id="格式：-str-position"><a href="#格式：-str-position" class="headerlink" title="格式：${str:position}"></a>格式：${str:position}</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#从位置position+1开始截取  </span><br><span class="line">echo $&#123;str:5&#125;   #从第5+1个元素开始截取</span><br><span class="line">#运行结果：ef,ghi,abcjkl</span><br></pre></td></tr></table></figure>
+<h4 id="格式：-str-start-length"><a href="#格式：-str-start-length" class="headerlink" title="格式：${str:start:length}"></a>格式：${str:start:length}</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#从start+1开始截取长度为length的字符串  </span><br><span class="line">echo $&#123;str:5：8&#125;   #从第5+1个元素开始截取长度8</span><br><span class="line">#运行结果：ef,ghi,a</span><br></pre></td></tr></table></figure>
+<h4 id="格式：-str-substring-或-str-substring"><a href="#格式：-str-substring-或-str-substring" class="headerlink" title="格式：${str#substring}或${str##substring}"></a>格式：${str#<em>substring}或${str##</em>substring}</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#从str开头开始删除到最近的substring包括substring</span><br><span class="line">echo $&#123;str#*c&#125;   #删除 开始~c *为通配符</span><br><span class="line">#运行结果：,def,ghi,abcjkl</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#从str开头开始删除到最远的substring包括substring</span><br><span class="line">echo $&#123;str##*c&#125;   #删除 开始~c *为通配符</span><br><span class="line">#运行结果：jkl</span><br></pre></td></tr></table></figure>
+<h4 id="格式-str-substring-或-str-substring"><a href="#格式-str-substring-或-str-substring" class="headerlink" title="格式${str%substring}或${str%%substring}"></a>格式${str%substring<em>}或${str%%substring</em>}</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#从str结尾开始删除到最近的substring包括substring</span><br><span class="line">echo $&#123;str%c*&#125;   #删除 c~结尾 *为通配符</span><br><span class="line">#运行结果：abc,def,ghi,ab</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#从str结尾开始删除到最远的substring包括substring</span><br><span class="line">echo $&#123;str%%c*&#125;   #删除 c~结尾 *为通配符</span><br><span class="line">#运行结果：ab</span><br></pre></td></tr></table></figure>
+<p>总结<br> #、## 表示从左边开始删除。一个 # 表示从左边删除到第一个指定的字符；两个 # 表示从左边删除到最后一个指定的字符。<br>%、%% 表示从右边开始删除。一个 % 表示从右边删除到第一个指定的字符；两个 % 表示从左边删除到最后一个指定的字符。<br>删除包括了指定的字符本身。</p>
+<h3 id="4-字符串的替换"><a href="#4-字符串的替换" class="headerlink" title="4. 字符串的替换"></a>4. 字符串的替换</h3><h4 id="格式-str-substring-replace或-str-substring-replace"><a href="#格式-str-substring-replace或-str-substring-replace" class="headerlink" title="格式 ${str/substring/replace或${str//substring/replace}"></a>格式 ${str/substring/replace或${str//substring/replace}</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#用TEST替换字符串中第一个abc  </span><br><span class="line">echo $&#123;str&#x2F;abc&#x2F;TEST&#125;  </span><br><span class="line">#运行结果：TEST,def,ghi,abcjkl</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#用TEST替换字符串所有的abc  </span><br><span class="line">echo $&#123;str&#x2F;&#x2F;abc&#x2F;TEST&#125;  </span><br><span class="line">#运行结果：TEST,def,ghi,TESTjkl</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#从str开头匹配，用TEST替换最长的a*c  </span><br><span class="line">echo $&#123;str&#x2F;#*c&#x2F;TEST&#125;  </span><br><span class="line">#TESTjkl</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
             </div>
             <hr/>
@@ -508,7 +420,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2019/08/01/nas-frp/">http://yoursite.com/2019/08/01/nas-frp/</a>
+                    <a href="http://yoursite.com/2018/03/09/shell-bian-liang/">http://yoursite.com/2018/03/09/shell-bian-liang/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -709,64 +621,51 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/08/01/nas-frp/">
+                <a href="/2018/03/11/shell-ji-ben-yun-suan-fu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="shell入门——基本运算符">
                         
-                        <span class="card-title">搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</span>
+                        <span class="card-title">shell入门——基本运算符</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS一.搭建黑群晖工具准备
+                            shell基本运算符类别介绍
+算术运算符
+关系运算符
+布尔运算符
+字符串运算符
+文件测试运算符
 
-
-名称
-作用
-
-
-
-不用U盘一个
-用作引导盘
-
-
-不用的电脑或者买的微型机
-安装NAS
-
-
-家用电脑
-用于安装和配置NAS
-
-
-芯片无忧
-用于查看U盘的PID和
+几点注意
+在进行求值操作时要使用expr
+表达式和运算符之间必须要有空格
+算数表达式要完全被``包含12a&#x3D;&#96;expr 2 
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-01
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-03-11
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
-                                    计算机网络
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -777,52 +676,33 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/03/13/shell-can-shu-chuan-di/">
+                <a href="/2017/11/06/ji-chong-yin-tuo-bu-bian-hua-dao-zhi-de-lian-lu-gu-zhang-qian-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="shell入门——参数的传递和数组">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="交换基础(3)--STP(续)">
                         
-                        <span class="card-title">shell入门——参数的传递和数组</span>
+                        <span class="card-title">交换基础(3)--STP(续)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            shell传递参数
-
-
-参数
-说明
-
-
-
-$0
-当前脚本的文件名
-
-
-n
-传递给脚本或函数的参数。n是一个数字，表示第几个参数。例如,第一个参数是$1，第二个参数是$2
-
-
-$#
-传递给脚本或函数的参数个数。
-
-
-$*
-传递给脚本或函数的所
+                            几种因拓扑变化导致的链路故障浅解认识STP的两种BPDU
+配置BPDU:也就是上篇所说讲到的在选举根桥，根端口，指定端口的过程中用于交换各交换机配置信息的数据包。
+拓扑变化通知BPDU(TCN BPDU)：当交换机需要将拓扑更改信号发出时，
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-03-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-11-06
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                    计算机网络
                                 </a>
                             
                             

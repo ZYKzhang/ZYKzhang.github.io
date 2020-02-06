@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, Kun&#39;blog">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="TCP的连接建立(三次握手)与断开(四次挥手), Kun&#39;blog">
+    <meta name="description" content="TCP的连接建立(三次握手)与断开(四次挥手)连接过程需要考虑的三个问题
+使建立双方都知道对方的存在
+允许双方协商一些参数(最大窗口…)
+对运输实体资源需知TCP的建立采用客户服务器模式(c/s)主动发起建立连接的应用进程是客户，被动等待连">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | Kun&#39;blog</title>
+    <title>TCP的连接建立(三次握手)与断开(四次挥手) | Kun&#39;blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -196,12 +199,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">TCP的连接建立(三次握手)与断开(四次挥手)</h1>
                 </div>
             </div>
         </div>
@@ -323,6 +326,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                计算机网络
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -330,7 +342,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-05
+                    2017-10-23
                 </div>
                 
 
@@ -352,19 +364,20 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h1 id="TCP的连接建立-三次握手-与断开-四次挥手"><a href="#TCP的连接建立-三次握手-与断开-四次挥手" class="headerlink" title="TCP的连接建立(三次握手)与断开(四次挥手)"></a>TCP的连接建立(三次握手)与断开(四次挥手)</h1><h2 id="连接过程需要考虑的三个问题"><a href="#连接过程需要考虑的三个问题" class="headerlink" title="连接过程需要考虑的三个问题"></a>连接过程需要考虑的三个问题</h2><ol>
+<li>使建立双方都知道对方的存在</li>
+<li>允许双方协商一些参数(最大窗口…)</li>
+<li>对运输实体资源<h2 id="需知"><a href="#需知" class="headerlink" title="需知"></a>需知</h2>TCP的建立采用客户服务器模式(c/s)主动发起建立连接的应用进程是客户，被动等待连接的是服务器<h2 id="连接建立过程"><a href="#连接建立过程" class="headerlink" title="连接建立过程"></a>连接建立过程</h2>初始状态：连接双方的TCP进程都处于(CLOSED)状态；<strong>道Client是主动打开连接</strong>，<strong>Server是被动打开连接</strong>进入LISTEN状态；</li>
+</ol>
+<p>(1)第一次握手：Client将标志位SYN置为1，随机产生一个值seq=J，并将该数据包发送给Server，Client进入SYN-SENT(同步已发送)状态，等待Server确认。</p>
+<p>(2)第二次握手：Server收到数据包后由标志位SYN=1知道Client请求建立连接，Server将标志位SYN和ACK都置为1，ack=J+1，随机产生一个值seq=K，并将该数据包发送给Client以确认连接请求，Server进入SYN-RCVD(同步收到)状态。</p>
+<p>(3)第三次握手：Client收到确认后，检查ack是否为J+1，ACK是否为1，如果正确则将标志位ACK置为1，ack=K+1，并将该数据包发送给Server，Server检查ack是否为K+1，ACK是否为1，如果正确则连接建立成功，Client和Server进入ESTABLISHED(已建立连接)状态，完成三次握手，随后Client与Server之间可以开始传输数据了。</p>
+<p> <img src="http://s4.51cto.com/wyfs02/M00/75/A5/wKiom1Y__jfCibe6AAAr9T4KX6s781.png" alt="image"></p>
+<h2 id="连接释放过程"><a href="#连接释放过程" class="headerlink" title="连接释放过程"></a>连接释放过程</h2><p> 初始状态：Client和Server都处于ESTABLISHED(已建立连接)状态；<br> (1)第一次挥手：Client发送一个FIN=1，用来关闭Client到Server的数据传送，Client进入FIN_WAIT_1(终止)状态。</p>
+<p>(2)第二次挥手：Server收到FIN后，发送一个ACK给Client，确认序号为收到序号+1(与SYN相同，一个FIN占用一个序号)，Server进入CLOSE_WAIT状态。</p>
+<p>(3)第三次挥手：Server发送一个FIN，用来关闭Server到Client的数据传送，Server进入LAST_ACK(最后确认)状态。</p>
+<p>(4)第四次挥手：Client收到FIN后，Client进入TIME_WAIT(时间等待)状态，接着发送一个ACK给Server，确认序号为收到序号+1，经过2MSL(最长报文寿命)等待后Server进入CLOSED状态，完成四次挥手。</p>
+<p><img src="http://s5.51cto.com/wyfs02/M01/75/A3/wKioL1Y__oeyXYjLAAAuUhKuLQs507.png" alt="image"></p>
 
             </div>
             <hr/>
@@ -390,7 +403,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/02/05/hello-world/">http://yoursite.com/2020/02/05/hello-world/</a>
+                    <a href="http://yoursite.com/2017/10/23/tcp-yun-shu-lian-jie/">http://yoursite.com/2017/10/23/tcp-yun-shu-lian-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -591,39 +604,41 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/05/hello-world/">
+                <a href="/2017/10/25/hui-wen-shu-shun-xu-zhan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="简单实例（回文数）学习顺序栈">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">简单实例（回文数）学习顺序栈</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            顺序栈实现回文数判断一. 思路根据栈的定义：只允许在一段进行插入和删除操作的线性表。即先入栈的后出栈。所以在进行判断的时候可以只让栈中1/2的元素按出栈顺序出栈和原字符串的前1/2一一比较即可。二. 分步代码实现1. 类型描述及定义1234
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2017-10-25
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            zhangyk
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -631,48 +646,30 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2019/08/01/nas-frp/">
+                <a href="/2017/10/23/tcp-yun-shu-lian-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="TCP的连接建立(三次握手)与断开(四次挥手)">
                         
-                        <span class="card-title">搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS</span>
+                        <span class="card-title">TCP的连接建立(三次握手)与断开(四次挥手)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            搭建黑群晖NAS+Frp内网穿透实现外网访问家庭NAS一.搭建黑群晖工具准备
-
-
-名称
-作用
-
-
-
-不用U盘一个
-用作引导盘
-
-
-不用的电脑或者买的微型机
-安装NAS
-
-
-家用电脑
-用于安装和配置NAS
-
-
-芯片无忧
-用于查看U盘的PID和
+                            TCP的连接建立(三次握手)与断开(四次挥手)连接过程需要考虑的三个问题
+使建立双方都知道对方的存在
+允许双方协商一些参数(最大窗口…)
+对运输实体资源需知TCP的建立采用客户服务器模式(c/s)主动发起建立连接的应用进程是客户，被动等待连
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-10-23
                             </span>
                         <span class="publish-author">
                             
@@ -686,6 +683,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
