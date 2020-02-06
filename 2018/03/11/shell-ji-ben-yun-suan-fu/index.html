@@ -15,7 +15,8 @@
 几点注意
 在进行求值操作时要使用expr
 表达式和运算符之间必须要有空格
-算数表达式要完全被``包含12a&amp;#x3D;&amp;#96;expr 2 ">
+算数表达式要完全被``包含a=`expr 2 + 2`
+echo &amp;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -36,7 +37,7 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -381,8 +382,8 @@
 <h3 id="几点注意"><a href="#几点注意" class="headerlink" title="几点注意"></a>几点注意</h3><ul>
 <li>在进行求值操作时要使用expr</li>
 <li>表达式和运算符之间必须要有空格</li>
-<li>算数表达式要完全被``包含<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a&#x3D;&#96;expr 2 + 2&#96;</span><br><span class="line">echo &quot;两数之和为 : $a&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a><strong>算数运算符</strong></h3><table>
+<li>算数表达式要完全被``包含<pre><code>a=`expr 2 + 2`
+echo &quot;两数之和为 : $a&quot;</code></pre><h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a><strong>算数运算符</strong></h3><table>
 <thead>
 <tr>
 <th align="center">运算符</th>
@@ -439,10 +440,38 @@
 <li>条件表达式要放在方括号之间，并且要有空格，例如: [$a==$b] 是错误的，必须写成 [ $a == $b ]。</li>
 </ol>
 <p><strong>实例</strong>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line"></span><br><span class="line">a&#x3D;10</span><br><span class="line">b&#x3D;20</span><br><span class="line"></span><br><span class="line">val&#x3D;&#96;expr $a + $b&#96;</span><br><span class="line">echo &quot;a + b : $val&quot;</span><br><span class="line"></span><br><span class="line">val&#x3D;&#96;expr $a - $b&#96;</span><br><span class="line">echo &quot;a - b : $val&quot;</span><br><span class="line"></span><br><span class="line">val&#x3D;&#96;expr $a \* $b&#96;</span><br><span class="line">echo &quot;a * b : $val&quot;</span><br><span class="line"></span><br><span class="line">val&#x3D;&#96;expr $b &#x2F; $a&#96;</span><br><span class="line">echo &quot;b &#x2F; a : $val&quot;</span><br><span class="line"></span><br><span class="line">val&#x3D;&#96;expr $b % $a&#96;</span><br><span class="line">echo &quot;b % a : $val&quot;</span><br><span class="line"></span><br><span class="line">if [ $a &#x3D;&#x3D; $b ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;a 等于 b&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;a 不等于 b&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<p>输出结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a + b : 30</span><br><span class="line">a - b : -10</span><br><span class="line">a * b : 200</span><br><span class="line">b &#x2F; a : 2</span><br><span class="line">b % a : 0</span><br><span class="line">a 不等于 b</span><br></pre></td></tr></table></figure>
-<h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a><strong>关系运算符</strong></h3><p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字<br>假设a=20; b=30.</p>
+<pre><code>#!/bin/bash
+
+a=10
+b=20
+
+val=`expr $a + $b`
+echo &quot;a + b : $val&quot;
+
+val=`expr $a - $b`
+echo &quot;a - b : $val&quot;
+
+val=`expr $a \* $b`
+echo &quot;a * b : $val&quot;
+
+val=`expr $b / $a`
+echo &quot;b / a : $val&quot;
+
+val=`expr $b % $a`
+echo &quot;b % a : $val&quot;
+
+if [ $a == $b ]
+then
+   echo &quot;a 等于 b&quot;
+else
+   echo &quot;a 不等于 b&quot;
+fi</code></pre><p>输出结果</p>
+<pre><code>a + b : 30
+a - b : -10
+a * b : 200
+b / a : 2
+b % a : 0
+a 不等于 b</code></pre><h3 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a><strong>关系运算符</strong></h3><p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字<br>假设a=20; b=30.</p>
 <table>
 <thead>
 <tr>
@@ -603,8 +632,58 @@
 </tr>
 </tbody></table>
 <p> <strong>用法实例</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash</span><br><span class="line">file&#x3D;&quot;&#x2F;shell-script&#x2F;sh02.sh&quot;</span><br><span class="line">if [ -r $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件可读&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件不可读&quot;</span><br><span class="line">fi</span><br><span class="line">if [ -w $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件可写&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件不可写&quot;</span><br><span class="line">fi</span><br><span class="line">if [ -x $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件可执行&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件不可执行&quot;</span><br><span class="line">fi</span><br><span class="line">if [ -f $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件为普通文件&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件为特殊文件&quot;</span><br><span class="line">fi</span><br><span class="line">if [ -d $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件是个目录&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件不是个目录&quot;</span><br><span class="line">fi</span><br><span class="line">if [ -s $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件不为空&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件为空&quot;</span><br><span class="line">fi</span><br><span class="line">if [ -e $file ]</span><br><span class="line">then</span><br><span class="line">   echo &quot;文件存在&quot;</span><br><span class="line">else</span><br><span class="line">   echo &quot;文件不存在&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<h3 id="shell注释的用法"><a href="#shell注释的用法" class="headerlink" title="shell注释的用法"></a><strong>shell注释的用法</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!bin&#x2F;bash</span><br><span class="line"># echo &quot;我是单行注释，你看不到我&quot;</span><br><span class="line"></span><br><span class="line">:&lt;&lt;!</span><br><span class="line">echo &quot;我是多行注释1，你看不到我&quot;</span><br><span class="line">echo &quot;我是多行注释2，你看不到我&quot;</span><br><span class="line">!</span><br><span class="line"></span><br><span class="line"># 其实!可以随意命名，只要别跟中间的注释内容相同即可。当Shell脚本执行遇到:&lt;&lt;!，就不执行脚本了，一直到再碰!后才重新开始执行脚本。如果忘记!或者写错(由于已经不执行脚本了，所以即使写错也不会报错)，则:&lt;&lt;!之后的脚步将都不会执行。</span><br></pre></td></tr></table></figure>
+<pre><code>#!/bin/bash
+file=&quot;/shell-script/sh02.sh&quot;
+if [ -r $file ]
+then
+   echo &quot;文件可读&quot;
+else
+   echo &quot;文件不可读&quot;
+fi
+if [ -w $file ]
+then
+   echo &quot;文件可写&quot;
+else
+   echo &quot;文件不可写&quot;
+fi
+if [ -x $file ]
+then
+   echo &quot;文件可执行&quot;
+else
+   echo &quot;文件不可执行&quot;
+fi
+if [ -f $file ]
+then
+   echo &quot;文件为普通文件&quot;
+else
+   echo &quot;文件为特殊文件&quot;
+fi
+if [ -d $file ]
+then
+   echo &quot;文件是个目录&quot;
+else
+   echo &quot;文件不是个目录&quot;
+fi
+if [ -s $file ]
+then
+   echo &quot;文件不为空&quot;
+else
+   echo &quot;文件为空&quot;
+fi
+if [ -e $file ]
+then
+   echo &quot;文件存在&quot;
+else
+   echo &quot;文件不存在&quot;
+fi</code></pre><h3 id="shell注释的用法"><a href="#shell注释的用法" class="headerlink" title="shell注释的用法"></a><strong>shell注释的用法</strong></h3><pre><code>#!bin/bash
+# echo &quot;我是单行注释，你看不到我&quot;
+
+:&lt;&lt;!
+echo &quot;我是多行注释1，你看不到我&quot;
+echo &quot;我是多行注释2，你看不到我&quot;
+!
+
+# 其实!可以随意命名，只要别跟中间的注释内容相同即可。当Shell脚本执行遇到:&lt;&lt;!，就不执行脚本了，一直到再碰!后才重新开始执行脚本。如果忘记!或者写错(由于已经不执行脚本了，所以即使写错也不会报错)，则:&lt;&lt;!之后的脚步将都不会执行。</code></pre>
             </div>
             <hr/>
 
@@ -908,8 +987,8 @@ $*
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            shell变量1. 使用变量：加美元符12your_name&#x3D;&quot;zhangyk&quot;echo $your_name #花括号作用是识别变量边界
-2. 只读变量readonly12Url&#x3D;&quot;htt
+                            shell变量1. 使用变量：加美元符your_name=&quot;zhangyk&quot;
+echo $your_name #花括号作用是识别变量边界2. 只读变量readonlyUrl=&quot;http://www.zhangy
                         
                     </div>
                     <div class="publish-info">

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="简单实例（回文数）学习顺序栈, Kun&#39;blog">
-    <meta name="description" content="顺序栈实现回文数判断一. 思路根据栈的定义：只允许在一段进行插入和删除操作的线性表。即先入栈的后出栈。所以在进行判断的时候可以只让栈中1/2的元素按出栈顺序出栈和原字符串的前1/2一一比较即可。二. 分步代码实现1. 类型描述及定义1234">
+    <meta name="description" content="顺序栈实现回文数判断一. 思路根据栈的定义：只允许在一段进行插入和删除操作的线性表。即先入栈的后出栈。所以在进行判断的时候可以只让栈中1/2的元素按出栈顺序出栈和原字符串的前1/2一一比较即可。二. 分步代码实现1. 类型描述及定义    ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -26,7 +26,7 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -361,17 +361,109 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="顺序栈实现回文数判断"><a href="#顺序栈实现回文数判断" class="headerlink" title="顺序栈实现回文数判断"></a>顺序栈实现回文数判断</h1><h2 id="一-思路"><a href="#一-思路" class="headerlink" title="一. 思路"></a>一. 思路</h2><pre><code>根据栈的定义：只允许在一段进行插入和删除操作的线性表。即先入栈的后出栈。所以在进行判断的时候可以只让栈中1/2的元素按出栈顺序出栈和原字符串的前1/2一一比较即可。</code></pre><h2 id="二-分步代码实现"><a href="#二-分步代码实现" class="headerlink" title="二. 分步代码实现"></a>二. 分步代码实现</h2><h3 id="1-类型描述及定义"><a href="#1-类型描述及定义" class="headerlink" title="1. 类型描述及定义"></a>1. 类型描述及定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct </span><br><span class="line">&#123;</span><br><span class="line"> char date[10];  &#x2F;&#x2F;定义栈的深度</span><br><span class="line"> int top;   &#x2F;&#x2F;栈顶的指针，指明栈顶位置</span><br><span class="line">&#125;seqstack;</span><br></pre></td></tr></table></figure>
-<h3 id="2-创建空栈"><a href="#2-创建空栈" class="headerlink" title="2. 创建空栈"></a>2. 创建空栈</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">seqstack *creat()</span><br><span class="line">&#123;</span><br><span class="line"> seqstack *s;   &#x2F;&#x2F;指向顺序栈的指针</span><br><span class="line"> s&#x3D;(seqstack *)malloc(sizeof(seqstack));</span><br><span class="line"> s-&gt;top&#x3D;-1;  &#x2F;&#x2F;初始化栈顶指针</span><br><span class="line"> return s;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3-入栈"><a href="#3-入栈" class="headerlink" title="3. 入栈"></a>3. 入栈</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">int push_seqstack(seqstack *s,char a[])</span><br><span class="line">&#123;</span><br><span class="line"> int i&#x3D;0; </span><br><span class="line"> if(s-&gt;top&#x3D;&#x3D;9)   &#x2F;&#x2F;判断栈是否满栈</span><br><span class="line">  return 0;</span><br><span class="line"> else</span><br><span class="line"> &#123;</span><br><span class="line">  while(a[i]!&#x3D;&#39;\0&#39;)  判断是否到字符串的结尾</span><br><span class="line">  &#123;</span><br><span class="line">   s-&gt;top++;</span><br><span class="line">   s-&gt;date[s-&gt;top]&#x3D;a[i];</span><br><span class="line">   fflush(stdin);</span><br><span class="line">   i++; </span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="4-出栈1-2并与原数组的前1-2比较"><a href="#4-出栈1-2并与原数组的前1-2比较" class="headerlink" title="4. 出栈1/2并与原数组的前1/2比较"></a>4. 出栈1/2并与原数组的前1/2比较</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    int out_seqstack(seqstack *s,char a[])</span><br><span class="line">    &#123;</span><br><span class="line">	    int flag&#x3D;1; </span><br><span class="line">	    int n&#x3D;s-&gt;top;  &#x2F;&#x2F;标记此时栈内元素的个数</span><br><span class="line">	    if(s-&gt;top&#x3D;&#x3D;-1)</span><br><span class="line">		    return 0;</span><br><span class="line">	    else</span><br><span class="line">	    &#123;</span><br><span class="line">		    for(int j&#x3D;0;j&lt;(n+1)&#x2F;2;j++)</span><br><span class="line">	        &#123;</span><br><span class="line">				if(a[j]!&#x3D;s-&gt;date[s-&gt;top]) &#x2F;*比较是否为回文数*&#x2F;</span><br><span class="line">				flag&#x3D;0;</span><br><span class="line">				s-&gt;top--;</span><br><span class="line">			&#125;</span><br><span class="line">			if(flag&#x3D;&#x3D;1)</span><br><span class="line">				printf(&quot;回文&quot;);</span><br><span class="line">			else</span><br><span class="line">				printf(&quot;不是回文&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="三-源代码"><a href="#三-源代码" class="headerlink" title="三. 源代码"></a>三. 源代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">  #includu&lt;stdio.h&gt;</span><br><span class="line">  #include&lt;malloc.h&gt;</span><br><span class="line">  typedef struct </span><br><span class="line">  &#123;</span><br><span class="line">   char date[10];</span><br><span class="line">   int top; </span><br><span class="line">  &#125;seqstack;</span><br><span class="line">  seqstack *creat()</span><br><span class="line">  &#123;</span><br><span class="line">   seqstack *s;</span><br><span class="line">   s&#x3D;(seqstack *)malloc(sizeof(seqstack));</span><br><span class="line">   s-&gt;top&#x3D;-1;</span><br><span class="line">   return s;	</span><br><span class="line">  &#125;</span><br><span class="line">  int push_seqstack(seqstack *s,char a[])</span><br><span class="line">  &#123;</span><br><span class="line">   int i&#x3D;0; </span><br><span class="line">   if(s-&gt;top&#x3D;&#x3D;9)</span><br><span class="line">    return 0;</span><br><span class="line">   else</span><br><span class="line">    while(a[i]!&#x3D;&#39;\0&#39;)</span><br><span class="line">    &#123;</span><br><span class="line">	    s-&gt;top++;</span><br><span class="line">	    s-&gt;date[s-&gt;top]&#x3D;a[i];</span><br><span class="line">	    fflush(stdin);</span><br><span class="line">	    i++; </span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  int out_seqstack(seqstack *s,char a[])</span><br><span class="line">  &#123;</span><br><span class="line">   int flag&#x3D;1; </span><br><span class="line">  	int n&#x3D;s-&gt;top;</span><br><span class="line">   if(s-&gt;top&#x3D;&#x3D;-1)</span><br><span class="line">    return 0;</span><br><span class="line">   else</span><br><span class="line">   &#123;</span><br><span class="line">	for(int j&#x3D;0;j&lt;(n+1)&#x2F;2;j++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(a[j]!&#x3D;s-&gt;date[s-&gt;top]) &#x2F;*比较是否为回文数*&#x2F;</span><br><span class="line">			flag&#x3D;0;</span><br><span class="line">		s-&gt;top--;</span><br><span class="line">	&#125;</span><br><span class="line">	if(flag&#x3D;&#x3D;1)</span><br><span class="line">		printf(&quot;回文&quot;);</span><br><span class="line">	else</span><br><span class="line">		printf(&quot;不是回文&quot;);</span><br><span class="line">			</span><br><span class="line">&#125;</span><br><span class="line">  &#125; </span><br><span class="line">  int main(int argc, char *argv[])</span><br><span class="line">  &#123;</span><br><span class="line">   seqstack *s;</span><br><span class="line">   char a[10];</span><br><span class="line">   scanf(&quot;%s&quot;,a);</span><br><span class="line">   s&#x3D;creat();</span><br><span class="line">   push_seqstack(s,a);</span><br><span class="line">   out_seqstack(s,a);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+                <h1 id="顺序栈实现回文数判断"><a href="#顺序栈实现回文数判断" class="headerlink" title="顺序栈实现回文数判断"></a>顺序栈实现回文数判断</h1><h2 id="一-思路"><a href="#一-思路" class="headerlink" title="一. 思路"></a>一. 思路</h2><pre><code>根据栈的定义：只允许在一段进行插入和删除操作的线性表。即先入栈的后出栈。所以在进行判断的时候可以只让栈中1/2的元素按出栈顺序出栈和原字符串的前1/2一一比较即可。</code></pre><h2 id="二-分步代码实现"><a href="#二-分步代码实现" class="headerlink" title="二. 分步代码实现"></a>二. 分步代码实现</h2><h3 id="1-类型描述及定义"><a href="#1-类型描述及定义" class="headerlink" title="1. 类型描述及定义"></a>1. 类型描述及定义</h3><pre><code>    typedef struct 
+    {
+        char date[10];  //定义栈的深度
+        int top;   //栈顶的指针，指明栈顶位置
+    }seqstack;</code></pre><h3 id="2-创建空栈"><a href="#2-创建空栈" class="headerlink" title="2. 创建空栈"></a>2. 创建空栈</h3><pre><code>    seqstack *creat()
+    {
+        seqstack *s;   //指向顺序栈的指针
+        s=(seqstack *)malloc(sizeof(seqstack));
+        s-&gt;top=-1;  //初始化栈顶指针
+        return s;    
+    }</code></pre><h3 id="3-入栈"><a href="#3-入栈" class="headerlink" title="3. 入栈"></a>3. 入栈</h3><pre><code>    int push_seqstack(seqstack *s,char a[])
+    {
+        int i=0; 
+        if(s-&gt;top==9)   //判断栈是否满栈
+            return 0;
+        else
+        {
+            while(a[i]!=&#39;\0&#39;)  判断是否到字符串的结尾
+            {
+                s-&gt;top++;
+                s-&gt;date[s-&gt;top]=a[i];
+                fflush(stdin);
+                i++; 
+            }
+        }
+    }</code></pre><h3 id="4-出栈1-2并与原数组的前1-2比较"><a href="#4-出栈1-2并与原数组的前1-2比较" class="headerlink" title="4. 出栈1/2并与原数组的前1/2比较"></a>4. 出栈1/2并与原数组的前1/2比较</h3><pre><code>    int out_seqstack(seqstack *s,char a[])
+    {
+        int flag=1; 
+        int n=s-&gt;top;  //标记此时栈内元素的个数
+        if(s-&gt;top==-1)
+            return 0;
+        else
+        {
+            for(int j=0;j&lt;(n+1)/2;j++)
+            {
+                if(a[j]!=s-&gt;date[s-&gt;top]) /*比较是否为回文数*/
+                flag=0;
+                s-&gt;top--;
+            }
+            if(flag==1)
+                printf(&quot;回文&quot;);
+            else
+                printf(&quot;不是回文&quot;);
+        }
+}</code></pre><h2 id="三-源代码"><a href="#三-源代码" class="headerlink" title="三. 源代码"></a>三. 源代码</h2><pre><code>    #includu&lt;stdio.h&gt;
+    #include&lt;malloc.h&gt;
+    typedef struct 
+    {
+        char date[10];
+        int top; 
+    }seqstack;
+    seqstack *creat()
+    {
+        seqstack *s;
+        s=(seqstack *)malloc(sizeof(seqstack));
+        s-&gt;top=-1;
+        return s;    
+    }
+    int push_seqstack(seqstack *s,char a[])
+    {
+        int i=0; 
+        if(s-&gt;top==9)
+            return 0;
+        else
+            while(a[i]!=&#39;\0&#39;)
+            {
+                s-&gt;top++;
+                s-&gt;date[s-&gt;top]=a[i];
+                fflush(stdin);
+                i++; 
+            }
+        }
+    }
+    int out_seqstack(seqstack *s,char a[])
+    {
+        int flag=1; 
+        int n=s-&gt;top;
+        if(s-&gt;top==-1)
+            return 0;
+        else
+        {
+            for(int j=0;j&lt;(n+1)/2;j++)
+            {
+                if(a[j]!=s-&gt;date[s-&gt;top]) /*比较是否为回文数*/
+                    flag=0;
+                s-&gt;top--;
+            }
+            if(flag==1)
+                printf(&quot;回文&quot;);
+            else
+                printf(&quot;不是回文&quot;);
 
-
-
-
-
-
+        }
+    } 
+    int main(int argc, char *argv[])
+    {
+        seqstack *s;
+        char a[10];
+        scanf(&quot;%s&quot;,a);
+        s=creat();
+        push_seqstack(s,a);
+        out_seqstack(s,a);
+    }</code></pre>
             </div>
             <hr/>
 
